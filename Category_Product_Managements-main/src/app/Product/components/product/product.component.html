@@ -1,0 +1,63 @@
+<!-- <div>
+    <h2>Products</h2>
+    <form (ngSubmit)="createProduct()">
+        <input [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required>
+        <input [(ngModel)]="newProduct.price" name="price" type="number" placeholder="Price" required>
+        <select [(ngModel)]="newProduct.category" name="category" required>
+            <option *ngFor="let category of categories" [value]="category.name">
+                {{ category.name }}
+            </option>
+        </select>
+        <button type="submit">Add Product</button>
+    </form>
+    <ul>
+        <li *ngFor="let product of products">
+            {{ product.name }} - ${{ product.price }} ({{ product.category}})
+            <button (click)="deleteProduct(product.id)">Delete</button>
+        </li>
+    </ul>
+</div> -->
+<!-- <div>
+    <h2>Products</h2>
+    <form (ngSubmit)="isUpdate ? updateProduct() : createProduct()">
+        <input [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required>
+        <input [(ngModel)]="newProduct.price" name="price" type="number" placeholder="Price" required>
+        <select [(ngModel)]="newProduct.category" name="category" required>
+            <option *ngFor="let category of categories" [value]="category.name">
+                {{ category.name }}
+            </option>
+        </select>
+        <button type="submit">{{ isUpdate ? 'Update' : 'Add' }} Product</button>
+    </form>
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search Products" (input)="filterProducts()">
+    <ul>
+        <li *ngFor="let product of filteredProducts">
+            {{ product.name }} - ${{ product.price }} ({{ product.category}})
+            <button (click)="editProduct(product)" id="up">Update</button>
+            <button (click)="deleteProduct(product.id)">Delete</button>
+        </li>
+    </ul>
+</div> -->
+<div>
+    <h2>Products</h2>
+    <form (ngSubmit)="isUpdate ? updateProduct() : createProduct()">
+        <input [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required>
+        <input [(ngModel)]="newProduct.price" name="price" type="number" placeholder="Price" required>
+        <select [(ngModel)]="newProduct.category" name="category" required>
+            <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+            </option>
+        </select>
+        <button type="submit">{{ isUpdate ? 'Update' : 'Add' }} Product</button>
+    </form>
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search Products" (input)="filterProducts()">
+    <button *ngIf="searchQuery" (click)="resetSearch()">Back</button>
+    <ul *ngIf="filteredProducts.length > 0">
+        <li *ngFor="let product of filteredProducts">
+            {{ product.name }} - ${{ product.price }} ({{ product.category}})
+            <button (click)="editProduct(product)" id="up">Update</button>
+            <button (click)="deleteProduct(product.id)">Delete</button>
+        </li>
+    </ul>
+    <p *ngIf="filteredProducts.length === 0">No products found.</p>
+</div>

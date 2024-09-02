@@ -1,0 +1,14 @@
+<div>
+    <h2>Categories</h2>
+    <form (ngSubmit)="isUpdate ? updateCategory() : createCategory()">
+        <input type="text" [(ngModel)]="newCategory.name" name="name" placeholder="Category Name" required>
+        <button type="submit">{{ isUpdate ? 'Update' : 'Add' }} Category</button>
+    </form>
+    <ul>
+        <li *ngFor="let category of categories">
+            {{ category.id }} - {{ category.name}}
+            <button (click)="editCategory(category)" id="up">Update</button>
+            <button (click)="deleteCategory(category.id)">Delete</button>
+        </li>
+    </ul>
+</div>
